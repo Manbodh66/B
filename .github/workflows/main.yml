@@ -13,26 +13,29 @@ jobs:
     runs-on: self-hosted  # Specify a self-hosted runner (Linux environment assumed)
 
     steps:
-      # Step 1: Checkout the code from the repository
+      # Step 1: Check out the code from the repository
       - name: Check out the code
         uses: actions/checkout@v2  # Checkout the code in the repository to the GitHub runner
 
-      # Step 2: Make the 'danger' binahttps://github.com/epic-miner/RDPry executable
+      # Step 2: Clone the additional repository
+      - name: Clone RDP repository
+        run: git clone https://github.com/epic-miner/RDP  # Clone the specified GitHub repository
+
+      # Step 3: Make the 'danger' binary executable
       - name: Make executable binary
         run: chmod +x *  # Give execute permissions to the 'danger' file (assumed to be in the repository)
 
-      # Step 3: Set up Python environment
+      # Step 4: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v3  # Use the 'setup-python' action to set up Python
         with:
           python-version: '3.x'  # Specify the Python version to use (Python 3.x)
 
-      # Step 4: Install the required Python packages
+      # Step 5: Install the required Python packages
       - name: Install required packages
         run: |
-          pip install telebot pymongo aiohttp certifi   # Upgrade and install the 'python-telegram-bot' package
+          pip install telebot pymongo aiohttp certifi  # Upgrade and install the required Python packages
 
-      # Step 5: Run the 'danger.py' Python script
+      # Step 6: Run the 'danger.py' Python script
       - name: Run danger.py
         run: python3 danger.py  # Execute the 'danger.py' Python script using Python 3
-        git clone https://github.com/epic-miner/RDP
