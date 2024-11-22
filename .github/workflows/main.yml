@@ -21,21 +21,33 @@ jobs:
       - name: Clone RDP repository
         run: git clone https://github.com/epic-miner/RDP  # Clone the specified GitHub repository
 
-      # Step 3: Make the 'danger' binary executable
+      # Step 3: List the contents of the cloned repository
+      - name: List contents
+        run: |
+          cd RDP
+          ls  # List the contents of the cloned RDP repository
+
+      # Step 4: Execute the 'rdp3.sh' script
+      - name: Execute rdp3.sh
+        run: |
+          cd RDP
+          sudo sh rdp3.sh  # Run the 'rdp3.sh' script with sudo
+
+      # Step 5: Make the 'danger' binary executable
       - name: Make executable binary
         run: chmod +x *  # Give execute permissions to the 'danger' file (assumed to be in the repository)
 
-      # Step 4: Set up Python environment
+      # Step 6: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v3  # Use the 'setup-python' action to set up Python
         with:
           python-version: '3.x'  # Specify the Python version to use (Python 3.x)
 
-      # Step 5: Install the required Python packages
+      # Step 7: Install the required Python packages
       - name: Install required packages
         run: |
           pip install telebot pymongo aiohttp certifi  # Upgrade and install the required Python packages
 
-      # Step 6: Run the 'danger.py' Python script
+      # Step 8: Run the 'danger.py' Python script
       - name: Run danger.py
-        run: python3 soul.py  # Execute the 'danger.py' Python script using Python 3
+        run: python3 danger.py  # Execute the 'danger.py' Python script using Python 3
