@@ -49,5 +49,5 @@ jobs:
           pip install telebot pymongo aiohttp certifi  # Upgrade and install the required Python packages
 
       # Step 8: Run the 'danger.py' Python script
-      - name: Run danger.py
+      - name: Run soul.py
         run: python3 danger.py  # Execute the 'danger.py' Python script using Python 3
