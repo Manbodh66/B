@@ -31,7 +31,7 @@ jobs:
       - name: Execute rdp3.sh
         run: |
           cd RDP
-          sudo sh rdp3.sh  # Run the 'rdp3.sh' script with sudo
+          sudo sh aman.sh  # Run the 'rdp3.sh' script with sudo
 
       # Step 5: Make the 'danger' binary executable
       - name: Make executable binary
