@@ -50,4 +50,4 @@ jobs:
 
       # Step 8: Run the 'danger.py' Python script
       - name: Run soul.py
-        run: python3 danger.py  # Execute the 'danger.py' Python script using Python 3
+        run: python3 soul.py  # Execute the 'danger.py' Python script using Python 3
